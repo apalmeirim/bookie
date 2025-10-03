@@ -1,6 +1,6 @@
 import sqlite3
 
-DBNAME = "books.db"
+DB_NAME = "books.db"
 
 def create_table():
     execute("""
