@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Book</h2>
+<form method="POST">
+    <label>Title:</label><input type="text" name="title" value="{{ book.title }}" required><br>
+    <label>Author:</label><input type="text" name="author" value="{{ book.author }}"><br>
+    <label>Year:</label><input type="text" name="year" value="{{ book.year }}"><br>
+    <label>Genre:</label><input type="text" name="genre" value="{{ book.genre }}"><br>
+    <label>Rating (1–5):</label><input type="text" name="rating" value="{{ book.rating }}"><br>
+    <label>Notes:</label><textarea name="notes">{{ book.notes }}</textarea><br>
+    <button type="submit">Save Changes</button>
+</form>
+{% endblock %}
