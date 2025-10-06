@@ -14,22 +14,14 @@ def create_table():
                    notes TEXT)
         """)
 
-def add_book(title, author, year, genre, rating, notes):
-    execute("""
-                    INSERT INTO books (title, author, year, genre, rating, notes)
-                    VALUES (?,?,?,?,?,?)""", (title, author, year, genre, rating, notes))
-    
-def delete_book(book_id):
-    execute("DELETE FROM books WHERE id = ?", (book_id,))
-
-def list_books():
-    return execute("SELECT * FROM books", fetch=True)
 
 
 def execute(query, params = (), fetch=False):
-    with sqlite3.connect(DBNAME) as conn:
+    """Execute a query. If fetch is True, return fetched results, else return number of affected rows."""
+    with sqlite3.connect(DB_NAME) as conn:
         cursor = conn.cursor()
         cursor.execute(query, params)
         if fetch:
             return cursor.fetchall()
         conn.commit()
+        return cursor.rowcount
